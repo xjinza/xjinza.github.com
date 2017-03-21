@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Blue Sky&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Record programme and life">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Blue Sky's Blog">
+<meta property="og:url" content="http://xjinza.github.io/index.html">
+<meta property="og:site_name" content="Blue Sky's Blog">
+<meta property="og:description" content="Record programme and life">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Blue Sky's Blog">
+<meta name="twitter:description" content="Record programme and life">
+  
+    <link rel="alternate" href="/atom.xml" title="Blue Sky&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Blue Sky&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Do one thing at a time, and do well.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://xjinza.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-form" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/29/form/" class="article-date">
+  <time datetime="2017-03-28T16:00:00.000Z" itemprop="datePublished">2017-03-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/front-end/">front end</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/29/form/">Operate form elements with jquery</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>When develope web sites we often have to operate form elements.<br>Form elements have types of text、password、select、checkbox、radio、textarea、file、hidden、button、image、reset and submit，but not include new html5 types。<br>I will introduce some of them in common use about get and set operation.<br>The type of file I will write another blog to introduce it.</p>
+<ul>
+<li><p>text、password、textarea、hidden operation：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"selector"</span>).val()  <span class="comment">//get value</span></div><div class="line">$(<span class="string">"selector"</span>).val(value) <span class="comment">//set value</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>select operation：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"selector"</span>).val()  <span class="comment">//get select value</span></div><div class="line">$(<span class="string">"selector option:selected"</span>).text() <span class="comment">//get select text</span></div><div class="line">$(<span class="string">"selector"</span>).val(value) <span class="comment">//set value</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>radio operation：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"selector :checked"</span>).val()  <span class="comment">//get radio checked value</span></div><div class="line">$(<span class="string">"selector [value="</span>+ value+<span class="string">"]"</span>).prop(<span class="string">'checked'</span>, <span class="literal">true</span>); <span class="comment">//set radio checked by value</span></div><div class="line">$(<span class="string">"selector "</span>).eq(index).prop(<span class="string">'checked'</span>, <span class="literal">true</span>); <span class="comment">//set radio checked by index</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>checkbox operation：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"selector :checked"</span>).val()  <span class="comment">//get single checkbox checked value</span></div><div class="line"></div><div class="line"><span class="comment">//get  checked array from checkbox group</span></div><div class="line"><span class="keyword">var</span> checkboxList=[];</div><div class="line">$(<span class="string">"selector :checked"</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params">index,item</span>)</span>&#123;</div><div class="line"> checkboxList.push($(<span class="keyword">this</span>).val());</div><div class="line">&#125;)</div><div class="line"></div><div class="line">$(<span class="string">"selector [value="</span>+ value+<span class="string">"]"</span>).prop(<span class="string">'checked'</span>, <span class="literal">true</span>); <span class="comment">//set checkbox checked by value</span></div><div class="line">$(<span class="string">"selector "</span>).eq(index).prop(<span class="string">'checked'</span>, <span class="literal">true</span>); <span class="comment">//set checkbox checked by index</span></div><div class="line"></div><div class="line"><span class="comment">//set checkbox checked from checked array</span></div><div class="line">$(<span class="string">"selector "</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params">index,item</span>)</span>&#123;                      </div><div class="line">       $(<span class="keyword">this</span>).prop(<span class="string">"checked"</span>,$.inArray($(<span class="keyword">this</span>).val(),checkboxList)!==<span class="number">-1</span>)</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="comment">//set all checkbox checked and not checked</span></div><div class="line">$(<span class="string">"#checkAll"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    $(<span class="string">'input:checkbox'</span>).not(<span class="keyword">this</span>).prop(<span class="string">'checked'</span>, <span class="keyword">this</span>.checked);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">//if the checkbox is checked</span></div><div class="line">$(<span class="string">"selector "</span>).is(<span class="string">':checked'</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>form serialize</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'form'</span>).serialize()</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h2 id="composite-demo"><a href="#composite-demo" class="headerlink" title="composite  demo:"></a>composite  demo:</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Sign up<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"http://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></div><div class="line">form &#123;</div><div class="line">    width: 600px;</div><div class="line">    margin: 50px auto;</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">"form-horizontal"</span> <span class="attr">role</span>=<span class="string">"form"</span> <span class="attr">id</span>=<span class="string">"form"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"firstname"</span> <span class="attr">class</span>=<span class="string">"col-sm-2 control-label"</span>&gt;</span>Username:<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-10"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">id</span>=<span class="string">"username"</span> <span class="attr">placeholder</span>=<span class="string">"Your username"</span> <span class="attr">value</span>=<span class="string">""</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"pwd"</span> <span class="attr">class</span>=<span class="string">"col-sm-2 control-label"</span>&gt;</span>Password:<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-10"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">id</span>=<span class="string">"pwd"</span> <span class="attr">value</span>=<span class="string">""</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"firstname"</span> <span class="attr">class</span>=<span class="string">"col-sm-2 control-label"</span>&gt;</span>Education:<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-10"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">select</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">name</span>=<span class="string">"education"</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">1</span>&gt;</span>--Please select--<span class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">1</span>&gt;</span>Primary school<span class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">2</span>&gt;</span>Middle school<span class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">3</span>&gt;</span>Senior high school<span class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">4</span>&gt;</span>University<span class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div class="line">                <span class="tag">&lt;/<span class="name">select</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"lastname"</span> <span class="attr">class</span>=<span class="string">"col-sm-2 control-label"</span>&gt;</span>Sex:<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-10"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"checkbox-inline"</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"sex"</span> <span class="attr">value</span>=<span class="string">1</span>&gt;</span> Male</div><div class="line">                <span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"checkbox-inline"</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"sex"</span> <span class="attr">value</span>=<span class="string">0</span>&gt;</span> Female</div><div class="line">                <span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"interest"</span> <span class="attr">class</span>=<span class="string">"col-sm-2 control-label"</span>&gt;</span>Interest:<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-10"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"checkbox-inline"</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"interest"</span> <span class="attr">value</span>=<span class="string">0</span>&gt;</span>Books</div><div class="line">                <span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"checkbox-inline"</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"interest"</span> <span class="attr">value</span>=<span class="string">1</span>&gt;</span>Music</div><div class="line">                <span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"checkbox-inline"</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"interest"</span> <span class="attr">value</span>=<span class="string">"2"</span>&gt;</span>Movies</div><div class="line">                <span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"checkbox-inline"</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"interest"</span> <span class="attr">value</span>=<span class="string">"3"</span>&gt;</span>Sports</div><div class="line">                <span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"checkbox-inline"</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"interest"</span> <span class="attr">value</span>=<span class="string">"4"</span>&gt;</span>Travel</div><div class="line">                <span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"introduction"</span> <span class="attr">class</span>=<span class="string">"col-sm-2 control-label"</span>&gt;</span>Introduction:<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-10"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">textarea</span> <span class="attr">name</span>=<span class="string">"introduction"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">rows</span>=<span class="string">"4"</span>&gt;</span><span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-offset-2 col-sm-10"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">class</span>=<span class="string">"btn btn-success"</span>&gt;</span>Sign up<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://code.jquery.com/jquery-latest.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">    $(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> data = &#123;</div><div class="line">            <span class="attr">username</span>: <span class="string">"Ross"</span>,</div><div class="line">            <span class="attr">password</span>: <span class="string">"123456"</span>,</div><div class="line">            <span class="attr">education</span>: <span class="number">2</span>,</div><div class="line">            <span class="attr">sex</span>: <span class="number">1</span>,</div><div class="line">            <span class="attr">interest</span>: [<span class="number">0</span>, <span class="number">1</span>, <span class="number">4</span>],</div><div class="line">            <span class="attr">introduction</span>: <span class="string">"My name is Rosste"</span></div><div class="line">        &#125;;</div><div class="line"></div><div class="line">        <span class="comment">//set value when form type is "text"、"password"、"hidden"、"textarea"</span></div><div class="line">        $(<span class="string">"input[name='username']"</span>).val(data.username);</div><div class="line">        $(<span class="string">"input[name='password']"</span>).val(data.password);</div><div class="line">        $(<span class="string">"textarea"</span>).val(data.introduction);</div><div class="line"></div><div class="line">        <span class="comment">//set select value</span></div><div class="line">        $(<span class="string">"select[name='education']"</span>).val(data.education);</div><div class="line"></div><div class="line">        <span class="comment">//set radio checked by value</span></div><div class="line">        $(<span class="string">"input[name='sex'][value="</span> + data.sex + <span class="string">"]"</span>).prop(<span class="string">'checked'</span>, <span class="literal">true</span>);</div><div class="line"></div><div class="line">        <span class="comment">//set radio checked by index</span></div><div class="line">        <span class="comment">// $("input[name='sex']").eq(0).prop('checked', true);</span></div><div class="line"></div><div class="line">        <span class="comment">//set checkbox group checked from checked array</span></div><div class="line">        $(<span class="string">"input[name='interest']"</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params">index, item</span>) </span>&#123;</div><div class="line">            $(<span class="keyword">this</span>).prop(<span class="string">"checked"</span>, $.inArray(<span class="built_in">parseInt</span>($(<span class="keyword">this</span>).val()), data.interest) !== <span class="number">-1</span>)</div><div class="line">        &#125;)</div><div class="line"></div><div class="line">        <span class="comment">//set checkbox checked by value</span></div><div class="line">        <span class="comment">// $("input[name='interest']").eq(0).prop('checked', true);</span></div><div class="line"></div><div class="line">        <span class="comment">//set checkbox checked by value</span></div><div class="line">        <span class="comment">// $("input[name='interest'][value=3]").prop('checked', true);</span></div><div class="line"></div><div class="line"></div><div class="line">        <span class="comment">// It's always advisable to use submit event ,click event is not recommend.</span></div><div class="line"></div><div class="line">        <span class="comment">// $("button").on("click", function(event) &#123; //not recommend</span></div><div class="line">        $(<span class="string">"#form"</span>).on(<span class="string">"submit"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</div><div class="line">            <span class="comment">//prevent it from submitting a form</span></div><div class="line">            event.preventDefault();</div><div class="line"></div><div class="line">            <span class="comment">//get value when form type is "text"、"password"、"hidden"、"textarea"</span></div><div class="line">            <span class="built_in">console</span>.log($(<span class="string">"input[type='text']"</span>).val(), <span class="string">"username"</span>)</div><div class="line">            <span class="built_in">console</span>.log($(<span class="string">"input[type='password']"</span>).val(), <span class="string">"password"</span>)</div><div class="line">            <span class="built_in">console</span>.log($(<span class="string">"textarea"</span>).val(), <span class="string">"introduction"</span>)</div><div class="line"></div><div class="line">            <span class="comment">//get select value</span></div><div class="line">            <span class="built_in">console</span>.log($(<span class="string">"select"</span>).val(), <span class="string">"education"</span>)</div><div class="line">                <span class="comment">//get select text</span></div><div class="line">                <span class="comment">// console.log($("select option:selected").text(),"education text")</span></div><div class="line"></div><div class="line">            <span class="comment">//get checked value</span></div><div class="line">            <span class="built_in">console</span>.log($(<span class="string">"input[type='radio']:checked"</span>).val(), <span class="string">"Sex"</span>);</div><div class="line"></div><div class="line">            <span class="comment">//get checked array from checkbox group</span></div><div class="line">            <span class="keyword">var</span> checkboxList = [];</div><div class="line">            $(<span class="string">"input[type='checkbox']:checked"</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params">index, item</span>) </span>&#123;</div><div class="line">                checkboxList.push(<span class="built_in">parseInt</span>($(<span class="keyword">this</span>).val()));</div><div class="line">                <span class="built_in">console</span>.log(checkboxList, <span class="string">"checkboxList"</span>);</div><div class="line">            &#125;)</div><div class="line"></div><div class="line">            <span class="comment">//serialize the form for ajax to send to backend</span></div><div class="line">            <span class="built_in">console</span>.log(<span class="built_in">decodeURIComponent</span>($(<span class="string">'form'</span>).serialize()), <span class="string">"serialize"</span>)</div><div class="line"></div><div class="line">        &#125;)</div><div class="line"></div><div class="line">    &#125;)</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://xjinza.github.io/2017/03/29/form/" data-id="cj0jk9nlf00005kunogz0wzj1" class="article-share-link">Delen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/form/">form</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jquery/">jquery</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/20/hello-world/" class="article-date">
+  <time datetime="2017-03-20T14:08:34.000Z" itemprop="datePublished">2017-03-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/20/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://xjinza.github.io/2017/03/20/hello-world/" data-id="cj0jj21nb000030unvuzoup43" class="article-share-link">Delen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categorieën</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/front-end/">front end</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Labels</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/form/">form</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/form/" style="font-size: 10px;">form</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archieven</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recente berichten</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/29/form/">Operate form elements with jquery</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/20/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 hf ke<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
