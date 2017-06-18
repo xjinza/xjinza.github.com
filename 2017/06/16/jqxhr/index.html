@@ -4,12 +4,12 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>About Me | Blue Sky&#39;s Blog</title>
+    <title>jquery ajax 之 jqXHR 和 Data Types详解 | Blue Sky&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="hf ke">
     
-    <meta name="description" content="About MeMy name is Ke hefu. You can call me Peter. I was born in 1980s.I am an IT developer focusing on technology about Html，Css and Javascript.I hav">
+    <meta name="description" content="jQuery 发送的所有 Ajax 请求，内部都会通过调用 $.ajax() 函数来实现。通常没有必要直接调用这个函数，可以使用几个已经封装的简便方法，如$.get()和.post()。如果你需要用到那些不常见的选项，那么， $.ajax()使用起来更灵活。注意: 可以通过$.ajaxSetup()">
     
     
     
@@ -65,15 +65,15 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/03/23/about/" title="About Me" itemprop="url">About Me</a>
+      <a href="/2017/06/16/jqxhr/" title="jquery ajax 之 jqXHR 和 Data Types详解" itemprop="url">jquery ajax 之 jqXHR 和 Data Types详解</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://xjinza.github.io" title="hf ke">hf ke</a>
     </p>
   <p class="article-time">
-    <time datetime="2017-03-23T11:03:47.000Z" itemprop="datePublished">2017-03-23</time>
-    更新日期:<time datetime="2017-03-27T13:54:35.000Z" itemprop="dateModified">2017-03-27</time>
+    <time datetime="2017-06-15T16:00:00.000Z" itemprop="datePublished">2017-06-16</time>
+    更新日期:<time datetime="2017-06-18T09:26:28.000Z" itemprop="dateModified">2017-06-18</time>
     
   </p>
 </header>
@@ -82,23 +82,59 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#About-Me"><span class="toc-number">1.</span> <span class="toc-text">About Me</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Photo"><span class="toc-number">1.1.</span> <span class="toc-text">Photo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ios-App"><span class="toc-number">1.2.</span> <span class="toc-text">Ios App</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Github"><span class="toc-number">1.3.</span> <span class="toc-text">Github</span></a></li></ol></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#jqXHR-对象"><span class="toc-number">1.</span> <span class="toc-text">jqXHR 对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Data-Types"><span class="toc-number">2.</span> <span class="toc-text">Data Types</span></a></li></ol>
 		</div>
 		
-		<h2 id="About-Me"><a href="#About-Me" class="headerlink" title="About Me"></a>About Me</h2><p>My name is Ke hefu. You can call me Peter. I was born in 1980s.<br>I am an IT developer focusing on technology about Html，Css and Javascript.<br>I have worked as front end developer for seven years,and I also intrest in Nodejs for back end develop.<br>In spare time, I like reading book, listening music and playing badminton.</p>
-<h3 id="Photo"><a href="#Photo" class="headerlink" title="Photo"></a>Photo</h3><p><img src="/images/avatar.png" alt=""></p>
-<h3 id="Ios-App"><a href="#Ios-App" class="headerlink" title="Ios App"></a>Ios App</h3><p><a href="https://itunes.apple.com/us/app/delay-diary/id1137832241?mt=8" target="_blank" rel="external">Delay Diary</a></p>
-<h3 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h3><p><a href="https://github.com/xjinza" target="_blank" rel="external">https://github.com/xjinza</a></p>
+		<p>jQuery 发送的所有 Ajax 请求，内部都会通过调用 $.ajax()<br> 函数来实现。通常没有必要直接调用这个函数，可以使用几个已经封装的简便方法，如$.get()和.post()。如果你需要用到那些不常见的选项，那么， $.ajax()使用起来更灵活。<br>注意: 可以通过$.ajaxSetup()函数来全局设置默认选项</p>
+<h3 id="jqXHR-对象"><a href="#jqXHR-对象" class="headerlink" title="jqXHR 对象"></a>jqXHR 对象</h3><p>从jQuery 1.5开始，$.ajax() 返回jqXHR对象，该对象是浏览器原生的XMLHttpRequest对象的一个超集。例如，它包含responseText和responseXML属性，以及一个getResponseHeader()方法。当传输机制不是XMLHttpRequest时（例如，一个JSONP请求脚本，返回一个脚本标签时），jqXHR对象尽可能的模拟原生的XHR功能。</p>
+<p>jqXHR对象 实现了 Promise 接口, 使它拥有了 Promise 的所有属性，方法和行为。</p>
+<ul>
+<li>jqXHR.done(function(data, textStatus, jqXHR) {});</li>
+<li>jqXHR.fail(function(jqXHR, textStatus, errorThrown) {});</li>
+<li>jqXHR.always(function(data|jqXHR, textStatus, jqXHR|errorThrown) { });</li>
+<li>jqXHR.then(function(data, textStatus, jqXHR) {}, function(jqXHR, textStatus, errorThrown) {});</li>
+</ul>
+<p>this在所有的回调中的引用，由这个对象在传递给$.ajax的context参数设置；如果没有指定context参数，this 引用的是Ajax settings本身。</p>
+<p>为了向后兼容XMLHttpRequest ，一jqXHR对象将公开下列属性和方法：</p>
+<ul>
+<li>readyState</li>
+<li>status</li>
+<li>statusText</li>
+<li>responseXML and/or responseText 当底层的请求分别作出XML和/或文本响应</li>
+<li>setRequestHeader(name, value) 从标准出发，通过替换旧的值为新的值，而不是替换的新值到旧值</li>
+<li>getAllResponseHeaders()</li>
+<li>getResponseHeader()</li>
+<li><p>abort()<br>假如没有onreadystatechange属性，因为不同的状态可以分别在 success ， error ， complete和statusCode 方法中进行处理。</p>
+<h3 id="Data-Types"><a href="#Data-Types" class="headerlink" title="Data Types"></a>Data Types</h3><p>可用的data types 包括 text, html, xml, json, jsonp, and script。</p>
+</li>
+<li><p>text 和 html类型返回的数据不会经过处理。这些数据仅仅是简单的传递给成功回调函数，并通过jqXHR对象的responseText获得。</p>
+</li>
+<li>xml类型在传递给成功回调函数前通过jQuery.parseXML解析成XMLDocument，并通过<br>jqXHR对象的responseXML获得。</li>
+<li>json类型在传递给成功回调函数前通过jQuery.parseJSON 解析成JSON对象，并通过<br>jqXHR对象的responseJSON 获得。</li>
+<li>script 类型在传递给成功回调函数前将执行从服务器接收到的JavaScript并作为一个字符串传递给成功回调函数</li>
+<li>jsonp类型会自动给请求的URL后面创建一个查询字符串参数 callback=? 。服务器端应当在JSON数据前加上回调函数名，以便完成一个有效的JSONP请求。$.ajax()将会执行返回的JavaScript，调用JSONP回调函数，在JSON 对象传递给成功回调函数前。</li>
+</ul>
+<p>注意：Script和JSONP形式请求不受同源策略的限制。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/jquery/">jquery</a><a href="/tags/ajax/">ajax</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/jquery/">jquery</a>
+</div>
 
 
 
 <div class="article-share" id="share">
 
-  <div data-url="http://xjinza.github.io/2017/03/23/about/" data-title="About Me | Blue Sky&#39;s Blog" data-tsina="null" class="share clearfix">
+  <div data-url="http://xjinza.github.io/2017/06/16/jqxhr/" data-title="jquery ajax 之 jqXHR 和 Data Types详解 | Blue Sky&#39;s Blog" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
@@ -108,18 +144,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2017/03/27/regular/" title="Commonly used regular expression">
+ <a href="/2017/06/17/cors/" title="cors解析">
   <strong>PREVIOUS:</strong><br/>
   <span>
-  Commonly used regular expression</span>
+  cors解析</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2016/12/10/yahoo-performance/"  title="yahoo 网站性能优化">
+<a href="/2017/05/29/ajax/"  title="jquery ajax 之参数解析">
  <strong>NEXT:</strong><br/> 
- <span>yahoo 网站性能优化
+ <span>jquery ajax 之参数解析
 </span>
 </a>
 </div>
@@ -132,7 +168,7 @@
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
-  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#About-Me"><span class="toc-number">1.</span> <span class="toc-text">About Me</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Photo"><span class="toc-number">1.1.</span> <span class="toc-text">Photo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ios-App"><span class="toc-number">1.2.</span> <span class="toc-text">Ios App</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Github"><span class="toc-number">1.3.</span> <span class="toc-text">Github</span></a></li></ol></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#jqXHR-对象"><span class="toc-number">1.</span> <span class="toc-text">jqXHR 对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Data-Types"><span class="toc-number">2.</span> <span class="toc-text">Data Types</span></a></li></ol>
   </div>
 
 <div id="asidepart">

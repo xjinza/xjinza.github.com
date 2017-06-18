@@ -4,12 +4,13 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>About Me | Blue Sky&#39;s Blog</title>
+    <title>jsonp原理解析 | Blue Sky&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="hf ke">
     
-    <meta name="description" content="About MeMy name is Ke hefu. You can call me Peter. I was born in 1980s.I am an IT developer focusing on technology about Html，Css and Javascript.I hav">
+    <meta name="description" content="在上一篇文章中介绍了CORS跨源资源共享，在本节中介绍JSONP跨源技术。
+JSONP也可以用来实现跨域资源请求，并且支持所有浏览器，不过JSONP只支持GET请求。JSONP不使用XMLHttpRequest 对象，而是用 script 标签。1&amp;lt;script src=&quot;demo_jsonp">
     
     
     
@@ -65,15 +66,15 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/03/23/about/" title="About Me" itemprop="url">About Me</a>
+      <a href="/2017/04/29/jsonp/" title="jsonp原理解析" itemprop="url">jsonp原理解析</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://xjinza.github.io" title="hf ke">hf ke</a>
     </p>
   <p class="article-time">
-    <time datetime="2017-03-23T11:03:47.000Z" itemprop="datePublished">2017-03-23</time>
-    更新日期:<time datetime="2017-03-27T13:54:35.000Z" itemprop="dateModified">2017-03-27</time>
+    <time datetime="2017-04-28T16:00:00.000Z" itemprop="datePublished">2017-04-29</time>
+    更新日期:<time datetime="2017-06-18T08:30:07.000Z" itemprop="dateModified">2017-06-18</time>
     
   </p>
 </header>
@@ -82,23 +83,38 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#About-Me"><span class="toc-number">1.</span> <span class="toc-text">About Me</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Photo"><span class="toc-number">1.1.</span> <span class="toc-text">Photo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ios-App"><span class="toc-number">1.2.</span> <span class="toc-text">Ios App</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Github"><span class="toc-number">1.3.</span> <span class="toc-text">Github</span></a></li></ol></li></ol>
+		
 		</div>
 		
-		<h2 id="About-Me"><a href="#About-Me" class="headerlink" title="About Me"></a>About Me</h2><p>My name is Ke hefu. You can call me Peter. I was born in 1980s.<br>I am an IT developer focusing on technology about Html，Css and Javascript.<br>I have worked as front end developer for seven years,and I also intrest in Nodejs for back end develop.<br>In spare time, I like reading book, listening music and playing badminton.</p>
-<h3 id="Photo"><a href="#Photo" class="headerlink" title="Photo"></a>Photo</h3><p><img src="/images/avatar.png" alt=""></p>
-<h3 id="Ios-App"><a href="#Ios-App" class="headerlink" title="Ios App"></a>Ios App</h3><p><a href="https://itunes.apple.com/us/app/delay-diary/id1137832241?mt=8" target="_blank" rel="external">Delay Diary</a></p>
-<h3 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h3><p><a href="https://github.com/xjinza" target="_blank" rel="external">https://github.com/xjinza</a></p>
+		<p>在上一篇文章中介绍了CORS跨源资源共享，在本节中介绍JSONP跨源技术。</p>
+<p>JSONP也可以用来实现跨域资源请求，并且支持所有浏览器，不过JSONP只支持GET请求。<br>JSONP不使用XMLHttpRequest 对象，而是用 script 标签。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"demo_jsonp.php"</span>&gt;</span><span class="undefined"></span></div></pre></td></tr></table></figure></p>
+<p><strong> 完整示例：</strong><br>html代码：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">"clickButton()"</span>&gt;</span>Click me!<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"demo"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line">function clickButton() &#123;</div><div class="line">    var s = document.createElement("script");</div><div class="line">    s.src = "demo_jsonp.php";</div><div class="line">    document.body.appendChild(s);</div><div class="line">&#125;</div><div class="line"></div><div class="line">function myFunc(myObj) &#123;</div><div class="line">  document.getElementById("demo").innerHTML = myObj.name;</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>php代码：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">$myJSON = <span class="string">'&#123; "name":"John", "age":30, "city":"New York" &#125;'</span>;</div><div class="line"><span class="keyword">echo</span> <span class="string">"myFunc("</span>.$myJSON.<span class="string">");"</span>;</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure></p>
+<p>返回一个以JSON数据为参数的名为myFunc函数，并执行。确保客户端中存在myFunc函数。</p>
+<p>为了实现前后端分离，在demo_jsonp.php后面添加查询参数?callback=myFunc，现在的script的src为demo_jsonp.php?callback=myFunc，然后后端就可以根据查询参数$_GET[‘callback’]获取回调函数名。</p>
+<p>jquery实现jsonp请求：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$.ajax(<span class="string">"demo.php"</span>,&#123;</div><div class="line">    <span class="attr">dataType</span>:<span class="string">"jsonp"</span>,</div><div class="line">    <span class="attr">jsonp</span>:<span class="string">"jsonpCallback"</span>, <span class="comment">//此字段不指定的话默认为callback，请求生成的url为demo_jsonp.php?jsonpCallback=myFunc</span></div><div class="line">    jsonpCallback:<span class="string">"myFunc"</span>, <span class="comment">//此字段不指定的话默认会生成一个随机名称，此例中不填会弹出error</span></div><div class="line">    success:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        alert(<span class="string">"success"</span>)</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">error</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        alert(<span class="string">"error"</span>)</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>})</p>
+<p>ps:jsonp的jquery实现可以参考<a href="http://www.cnblogs.com/aaronjs/p/3785646.html" target="_blank" rel="external">http://www.cnblogs.com/aaronjs/p/3785646.html</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/jquery/">jquery</a><a href="/tags/ajax/">ajax</a><a href="/tags/跨域/">跨域</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/front-end/">front end</a>
+</div>
 
 
 
 <div class="article-share" id="share">
 
-  <div data-url="http://xjinza.github.io/2017/03/23/about/" data-title="About Me | Blue Sky&#39;s Blog" data-tsina="null" class="share clearfix">
+  <div data-url="http://xjinza.github.io/2017/04/29/jsonp/" data-title="jsonp原理解析 | Blue Sky&#39;s Blog" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
@@ -108,18 +124,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2017/03/27/regular/" title="Commonly used regular expression">
+ <a href="/2017/05/12/sington/" title="JavaScript之单例模式">
   <strong>PREVIOUS:</strong><br/>
   <span>
-  Commonly used regular expression</span>
+  JavaScript之单例模式</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2016/12/10/yahoo-performance/"  title="yahoo 网站性能优化">
+<a href="/2017/03/29/form/"  title="Operate form elements with jquery">
  <strong>NEXT:</strong><br/> 
- <span>yahoo 网站性能优化
+ <span>Operate form elements with jquery
 </span>
 </a>
 </div>
@@ -132,7 +148,7 @@
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
-  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#About-Me"><span class="toc-number">1.</span> <span class="toc-text">About Me</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Photo"><span class="toc-number">1.1.</span> <span class="toc-text">Photo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ios-App"><span class="toc-number">1.2.</span> <span class="toc-text">Ios App</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Github"><span class="toc-number">1.3.</span> <span class="toc-text">Github</span></a></li></ol></li></ol>
+  
   </div>
 
 <div id="asidepart">
