@@ -88,7 +88,7 @@ JSONP也可以用来实现跨域资源请求，并且支持所有浏览器，不
 		
 		<p>在上一篇文章中介绍了CORS跨源资源共享，在本节中介绍JSONP跨源技术。</p>
 <p>JSONP也可以用来实现跨域资源请求，并且支持所有浏览器，不过JSONP只支持GET请求。<br>JSONP不使用XMLHttpRequest 对象，而是用 script 标签。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"demo_jsonp.php"</span>&gt;</span><span class="undefined"></span></div></pre></td></tr></table></figure></p>
-<p><strong> 完整示例：</strong><br>html代码：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">"clickButton()"</span>&gt;</span>Click me!<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"demo"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line">function clickButton() &#123;</div><div class="line">    var s = document.createElement("script");</div><div class="line">    s.src = "demo_jsonp.php";</div><div class="line">    document.body.appendChild(s);</div><div class="line">&#125;</div><div class="line"></div><div class="line">function myFunc(myObj) &#123;</div><div class="line">  document.getElementById("demo").innerHTML = myObj.name;</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p><strong> 完整示例：</strong><br>html代码：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">"clickButton()"</span>&gt;</span>Click me!<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"demo"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">clickButton</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> s = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</div><div class="line">    s.src = <span class="string">"demo_jsonp.php"</span>;</div><div class="line">    <span class="built_in">document</span>.body.appendChild(s);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunc</span>(<span class="params">myObj</span>) </span>&#123;</div><div class="line">  <span class="built_in">document</span>.getElementById(<span class="string">"demo"</span>).innerHTML = myObj.name;</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>php代码：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">$myJSON = <span class="string">'&#123; "name":"John", "age":30, "city":"New York" &#125;'</span>;</div><div class="line"><span class="keyword">echo</span> <span class="string">"myFunc("</span>.$myJSON.<span class="string">");"</span>;</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure></p>
 <p>返回一个以JSON数据为参数的名为myFunc函数，并执行。确保客户端中存在myFunc函数。</p>
 <p>为了实现前后端分离，在demo_jsonp.php后面添加查询参数?callback=myFunc，现在的script的src为demo_jsonp.php?callback=myFunc，然后后端就可以根据查询参数$_GET[‘callback’]获取回调函数名。</p>
@@ -168,10 +168,6 @@ JSONP也可以用来实现跨域资源请求，并且支持所有浏览器，不
 		
 			<li><a href="/categories/jquery/" title="jquery">jquery<sup>4</sup></a></li>
 		
-			<li><a href="/categories/工具/" title="工具">工具<sup>0</sup></a></li>
-		
-			<li><a href="/categories/技术/" title="技术">技术<sup>0</sup></a></li>
-		
 		</ul>
 </div>
 
@@ -183,27 +179,17 @@ JSONP也可以用来实现跨域资源请求，并且支持所有浏览器，不
 		
 			<li><a href="/tags/ajax/" title="ajax">ajax<sup>5</sup></a></li>
 		
-			<li><a href="/tags/angular/" title="angular">angular<sup>0</sup></a></li>
-		
 			<li><a href="/tags/angular，性能/" title="angular，性能">angular，性能<sup>1</sup></a></li>
 		
 			<li><a href="/tags/cors/" title="cors">cors<sup>1</sup></a></li>
 		
 			<li><a href="/tags/form/" title="form">form<sup>1</sup></a></li>
 		
-			<li><a href="/tags/javascript/" title="javascript">javascript<sup>0</sup></a></li>
-		
 			<li><a href="/tags/jquery/" title="jquery">jquery<sup>5</sup></a></li>
-		
-			<li><a href="/tags/jsonp/" title="jsonp">jsonp<sup>0</sup></a></li>
-		
-			<li><a href="/tags/performance/" title="performance">performance<sup>0</sup></a></li>
 		
 			<li><a href="/tags/regular-expression/" title="regular expression">regular expression<sup>1</sup></a></li>
 		
 			<li><a href="/tags/性能/" title="性能">性能<sup>1</sup></a></li>
-		
-			<li><a href="/tags/源码分析/" title="源码分析">源码分析<sup>0</sup></a></li>
 		
 			<li><a href="/tags/设计模式/" title="设计模式">设计模式<sup>1</sup></a></li>
 		
